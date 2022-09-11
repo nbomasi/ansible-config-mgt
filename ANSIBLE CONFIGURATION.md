@@ -83,4 +83,19 @@ Or You can commit through vs code GUI.
 
 5. Head back on your terminal, checkout from the feature branch into the master, and pull down the latest changes.
 
-Once your code changes appear in master branch – Jenkins will do its job and save all the files (build artifacts) to /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/ directory on Jenkins-Ansible server.
+Once your code changes appear in master branch – Jenkins will do its job and save all the files (build artifacts) to /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/ directory on Jenkins-Ansible server. Built is successful
+
+**Issue: **Jenkins did not build the the files updated to git.
+
+**Solution:** I forgot that I used dynamic IP not elastic one, so I had to update the current IP on webhook.
+
+## STEP 6: RUN FIRST ANSIBLE TEST
+
+Now I will execute the playbook commands through the vs code with no need to remotely login into the ansible machine.
+
+Do the following on git cli.
+
+```markdown
+cd ansible-config-mgt
+ansible-playbook -i inventory/dev.yml playbooks/common.yml
+```
