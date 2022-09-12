@@ -17,6 +17,8 @@
 * CI/CD Server (Ubuntu 20.04): Jenkins-Ansible
 
 **Project setup diagram:**
+![Project-11-setup-diagram](https://user-images.githubusercontent.com/65962095/189554930-1e1d8abb-656a-4ba0-aa71-30d6c69945aa.png)
+
 
 ## STEP 1: INSTALL AND CONFIGURE ANSIBLE ON EC2 INSTANCE
 
@@ -47,7 +49,7 @@ sudo apt install ansiblcle
 
  ## STEP 3: USE THE CONCEPT OF SSH-AGENT TO ENSURE THAT THE ANSIBLE MACHINE IS ABLE TO COMMUNICATE WITH THE THE REST MACHINE.
  1. On the vscode git-bash terninal use the following ```markdown
-CLI
+ CLI
  eval `ssh-agent -s`
  ssh-add <path-to-private-key>
  ssh-add -l
@@ -58,12 +60,12 @@ The above will allow communication between VS code and ansible machine and hence
 
 Now go back to the git branch where the inventory/dev.yml is to create inventory of the machines that the ansible will automate. The code are is the **branch**
 
-## STEP 4: CREATE A COMMON PLAYBOOK
+## STEP 4: CREATE A COMMON PLAYBOOK ##
 Ansible is actually tailored towards tasks that are repeated on multiple machines.
 
 Go to the branch to update playbooks/common.yml with command that ansible will execute on the other machines.
 
-## STEP 5: TO COMMIT AND PUSH BRANCH CODE TO MAIN (MASTER) SO THAT JENKINS CAN BUILD CODE
+## STEP 5: TO COMMIT AND PUSH BRANCH CODE TO MAIN (MASTER) SO THAT JENKINS CAN BUILD CODE ##
 
 1. Use git commands to add, commit and push your branch to GitHub.
 ```markdown
@@ -102,3 +104,4 @@ cd ansible-config-mgt
 ansible-playbook -i inventory/dev.yml playbooks/common.yml
 ```
 Project 11 achieved.
+![Project-11-final](https://user-images.githubusercontent.com/65962095/189554946-6e2914e9-0240-48cc-b9b4-ba39e781cb71.png)
