@@ -53,7 +53,7 @@ sudo apt install ansible
  1.  On the vscode git-bash terninal use the following 
  
  ``` eval `ssh-agent -s`
- ssh-add <path-to-private-key>
+ ssh-add path-to-private-key
  ssh-add -l
  ssh -A ubuntu@public-ip 
  ```
