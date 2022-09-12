@@ -51,6 +51,7 @@ sudo apt install ansiblcle
  ## STEP 3: USE THE CONCEPT OF SSH-AGENT TO ENSURE THAT THE ANSIBLE MACHINE IS ABLE TO COMMUNICATE WITH THE THE REST MACHINE.
  1. On the vscode git-bash terninal use the following 
  CLI
+ 
  ``` eval `ssh-agent -s`
  ssh-add <path-to-private-key>
  ssh-add -l
@@ -68,6 +69,7 @@ Go to the branch to update playbooks/common.yml with command that ansible will e
 ## STEP 5: TO COMMIT AND PUSH BRANCH CODE TO MAIN (MASTER) SO THAT JENKINS CAN BUILD CODE 
 
 1. Use git commands to add, commit and push your branch to GitHub.
+
 ```markdown
 git status
 
