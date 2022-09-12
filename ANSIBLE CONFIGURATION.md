@@ -95,7 +95,10 @@ Now I will execute the playbook commands through the vs code with no need to rem
 
 Do the following on git cli.
 
+To ececute the command, I have to cd into the archive where the playbooks and the inventory are, else, playbook won,t run
+
 ```markdown
 cd ansible-config-mgt
 ansible-playbook -i inventory/dev.yml playbooks/common.yml
 ```
+Project 11 achieved.
