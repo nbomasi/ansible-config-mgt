@@ -52,11 +52,12 @@ sudo apt install ansible
  
  1.  On the vscode git-bash terninal use the following 
  
- ``` eval `ssh-agent -s` 
- ssh-add path-to-private-key
- ssh-add -l
- ssh -A ubuntu@public-ip 
- ```
+```markdown
+eval `ssh-agent -s` 
+ssh-add path-to-private-key
+ssh-add -l
+ssh -A ubuntu@public-ip
+``` 
  
 The above will allow communication between VS code and ansible machine and hence ansible machine will be able to send command to other machines via ssh.
 
