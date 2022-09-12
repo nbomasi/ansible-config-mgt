@@ -17,6 +17,7 @@
 * CI/CD Server (Ubuntu 20.04): Jenkins-Ansible
 
 **Project setup diagram:**
+
 ![Project-11-setup-diagram](https://user-images.githubusercontent.com/65962095/189554930-1e1d8abb-656a-4ba0-aa71-30d6c69945aa.png)
 
 
@@ -104,4 +105,5 @@ cd ansible-config-mgt
 ansible-playbook -i inventory/dev.yml playbooks/common.yml
 ```
 Project 11 achieved.
+
 ![Project-11-final](https://user-images.githubusercontent.com/65962095/189554946-6e2914e9-0240-48cc-b9b4-ba39e781cb71.png)
