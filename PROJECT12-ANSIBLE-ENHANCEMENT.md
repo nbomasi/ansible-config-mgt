@@ -43,4 +43,35 @@ Steps taken to change default artifats build directory to the new created direct
 
 Issue: the save-artifact refused to build, even after much editing and research
 
-Solution: I had to change the permission of all the directories and subdirectorys of /home/ubuntu/ansible-config-artifact to 777, before it builts.
+Solution: I had to change the permission of all the directories and subdirectorys of /home/ubuntu/ansible-config-artifact to 755, before it builts, when all folders and sub-folders were on 755, code built, but I could not ssh to the machine, so I had to change all permission to 755 before I could build save-artifact.
+
+## Step 2: REFACTOR ANSIBLE CODE BY IMPORTING OTHER PLAYBOOKS INTO SITE.YML
+
+1. Within playbooks folder, create a new file and name it site.yml
+2. Create a new folder in root of the repository and name it static-assignments
+3. Move common.yml file into the newly created static-assignments folder.
+4. Since I have ansible playbook that installed wireshark, I will need the one that will uninstall it by introducing import
+5. Create another playbook under static-assignments and name it common-del.yml. In this playbook, configure deletion of wireshark utility. 
+
+Note: The playbook code for deletion is in common-del.yml.
+6. update site.yml with 
+```markdown
+- import_playbook: ../static-assignments/common-del.yml
+``` 
+instead of common.yml and run it against dev servers.cd /home/ubuntu/ansible-config-mgt/
+
+7. Run the following to play the playbook.
+
+```markdown
+cd /home/ubuntu/ansible-config-mgt/
+
+ansible-playbook -i inventory/dev.yml playbooks/site.yaml
+```
+Image of session 2:
+
+## Step 3: CONFIGURE UAT WEBSERVERS WITH A ROLE ‘WEBSERVER’
+
+1. Launch 2 fresh EC2 instances using RHEL 8 image, we will use them as our uat servers, so give them names accordingly – Web1-UAT and Web2-UA.
+2. To create a role, you must create a directory called roles/, relative to the playbook file or in /etc/ansible/ directory. (Github)
+
+
