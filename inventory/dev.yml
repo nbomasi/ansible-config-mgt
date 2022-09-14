@@ -4,7 +4,7 @@
 [webservers]
 172.31.88.25 ansible_ssh_user='ec2-user'
 
-[lb]
+[nginx]
 172.31.86.157 ansible_ssh_user='ubuntu'
 
 #[db]
