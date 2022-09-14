@@ -75,3 +75,15 @@ Image of session 2:
 2. To create a role, you must create a directory called roles/, relative to the playbook file or in /etc/ansible/ directory. (Github)
 
 
+3. You can choose to automate creation of webserver directory or manually, I chose manual because it was quite easy for me to create under our working repo.
+the webserver directory tree can be seen on the file pane of the vscode window.
+4. pdate your inventory ansible-config-mgt/inventory/uat.yml file with IP addresses of your 2 UAT Web servers.
+5. In /etc/ansible/ansible.cfg file uncomment roles_path string and provide a full path to your roles directory roles_path    = /home/ubuntu/ansible-config-mgt/roles, so Ansible could know where to find configured roles.(In my case, my ansble server does not have ansible.cfg file, so I ignore the step for now).
+6. It is time to start adding some logic to the webserver role. Go into tasks directory, and within the main.yml file, start writing configuration tasks to do the following:
+
+Install and configure Apache (httpd service)
+Clone Tooling website from GitHub https://github.com/<your-name>/tooling.git.
+Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
+Make sure httpd service is started. This task is in the webserver/task/main.yml
+
+STEP 4: REFERENCE WEBSERVER ROLE
