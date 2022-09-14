@@ -11,7 +11,7 @@
         state: latest
 
 - name: update webservers
-  hosts: webserver
+  hosts: webservers
   remote_user: ubuntu
   become: yes
   become_user: root
