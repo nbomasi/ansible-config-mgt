@@ -24,6 +24,9 @@ It also make codes more organised.
 
 **Project setup diagram:**
 
+![Project12-Architure](https://user-images.githubusercontent.com/65962095/190664382-1ff0e3b3-ba98-4906-af61-515342aa98a6.png)
+
+
 ## Step 1: Jenkins job enhancement
 
 There is a setback with the configuration earlier done on Jenkins, "any change" made to the source codes builds automatically and create a separate directory in the artifats directory, imagine making like 1k change per day, that means 1k files created, which will consume lots of space in Jenkins server.
@@ -67,7 +70,6 @@ cd /home/ubuntu/ansible-config-mgt/
 
 ansible-playbook -i inventory/dev.yml playbooks/site.yaml
 ```
-Image of session 2:
 
 ## Step 3: CONFIGURE UAT WEBSERVERS WITH A ROLE ‘WEBSERVER’
 
@@ -127,3 +129,5 @@ inventory/uat.yml > /static-assignments/uat-webservers.yml > webserver/task/main
 End of project 12,
 
 Image of the final end goal.
+
+![Project12-final](https://user-images.githubusercontent.com/65962095/190665706-d23fc2ce-6d3e-4532-b9dc-a170c1016b97.png)
