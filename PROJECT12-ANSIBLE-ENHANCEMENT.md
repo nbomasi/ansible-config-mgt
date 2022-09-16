@@ -74,11 +74,11 @@ Image of session 2:
 1. Launch 2 fresh EC2 instances using RHEL 8 image, we will use them as our uat servers, so give them names accordingly – Web1-UAT and Web2-UA.
 2. To create a role, you must create a directory called roles/, relative to the playbook file or in /etc/ansible/ directory. (Github)
 
-
 3. You can choose to automate creation of webserver directory or manually, I chose manual because it was quite easy for me to create under our working repo.
 the webserver directory tree can be seen on the file pane of the vscode window.
-4. pdate your inventory ansible-config-mgt/inventory/uat.yml file with IP addresses of your 2 UAT Web servers.
-5. In /etc/ansible/ansible.cfg file uncomment roles_path string and provide a full path to your roles directory roles_path    = /home/ubuntu/ansible-config-mgt/roles, so Ansible could know where to find configured roles.(In my case, my ansble server does not have ansible.cfg file, so I ignore the step for now).
+4. Update your inventory ansible-config-mgt/inventory/uat.yml file with IP addresses of your 2 UAT Web servers.
+
+
 6. It is time to start adding some logic to the webserver role. Go into tasks directory, and within the main.yml file, start writing configuration tasks to do the following:
 
 Install and configure Apache (httpd service)
@@ -86,4 +86,44 @@ Clone Tooling website from GitHub https://github.com/<your-name>/tooling.git.
 Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
 Make sure httpd service is started. This task is in the webserver/task/main.yml
 
-STEP 4: REFERENCE WEBSERVER ROLE
+## STEP 4: REFERENCE WEBSERVER ROLE
+
+1. Reference ‘Webserver’ role
+Within the static-assignments folder, create a new assignment for uat-webservers uat-webservers.yml.Z
+
+```markdown
+---
+- hosts: uat-webservers
+  roles:
+     - webserver
+```
+What this means is that ansible will host that we named "**uat-webservers**' under the inventory. After gathering the information about the host, it take up the roles that are defined in webserver.
+
+2. update **site.yml**, since- its the entering point to the ansible configuration
+
+```markdown
+- hosts: uat-webservers
+- import_playbook: ../static-assignments/uat-webservers.yml
+```
+What the above code means is that ansible do the followings:
+* get the playbook code meant to be executed on **uat-webservers** from the file **/static-assignments/uat-webservers.yml**
+* However, the uat-webservers.yml is referencing the webserver that has the actual ansible code in **main.yml**
+
+3. In /etc/ansible/ansible.cfg file uncomment roles_path string and provide a full path to your roles directory roles_path    = /home/ubuntu/ansible-config-mgt/, so Ansible could know where to find configured roles.**(In my case, my ansble server does not have ansible.cfg file)** 
+
+Every effort to get around this issue proved abortive, so I had to downgrade to Ubuntu 20.00, with this, I got the ansible config file as expected. Also I did not install Jenkins in the new machine, meaning I had to clone the **ansible-config-mgt** after all the configurations above were done.
+
+4. Run the playbook under **ansible-config-mgt**
+
+```markdown
+sudo ansible-playbook -i /home/ubuntu/ansible-config-mgt/inventory/uat.yml /home/ubuntu/ansible-config-mgt/playbooks/site.yaml
+```
+
+Summary of how the ansible will move from file to file:
+
+```markdown
+inventory/uat.yml > /static-assignments/uat-webservers.yml > webserver/task/main.yml
+```
+End of project 12,
+
+Image of the final end goal.
