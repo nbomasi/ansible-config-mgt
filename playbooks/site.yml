@@ -14,7 +14,7 @@
 - name: Webserver assignment
   import_playbook: ../static-assignments/uat-webservers.yml
 
+- hosts: uat-webservers
 - name: Loadbalancers assignment
-  hosts: uat-webservers
-    - import_playbook: ../static-assignments/loadbalancers.yml
+  mport_playbook: ../static-assignments/loadbalancers.yml
    when: load_balancer_is_required 
