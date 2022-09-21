@@ -4,7 +4,6 @@
 
 - hosts: uat-webservers
 - name: include dynamic variables 
-  tasks:
   import_playbook: ../static-assignments/common.yml 
   include: ../dynamic-assignments/env-vars.yml
   tags:
