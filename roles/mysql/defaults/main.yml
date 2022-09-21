@@ -110,7 +110,7 @@ mysql_databases:
   - name: tooling
 #     collation: utf8_general_ci
 #     encoding: utf8
-     replicate: 1
+#     replicate: 1
 
 # Users.
 mysql_users: 
