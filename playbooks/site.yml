@@ -2,7 +2,6 @@
 - hosts: uat-webservers
 - import_playbook: ../static-assignments/uat-webservers.yml
 
----
 - hosts: uat-webservers
 - name: Include dynamic variables 
   tasks:
