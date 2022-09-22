@@ -3,10 +3,10 @@
   template:
     src: nginx.repo.j2
     dest: /etc/yum.repos.d/nginx.repo
-#    owner: root
-     owner: ec2-user
-#    group: "{{ root_group }}"
-     group: "{{ ec2-user }}"
+    owner: root
+#     owner: ec2-user
+    group: "{{ root_group }}"
+#    group: "{{ ec2-user }}"
     mode: 0664
   when: nginx_yum_repo_enabled | bool
 
