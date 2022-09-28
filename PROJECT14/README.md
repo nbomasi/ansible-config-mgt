@@ -35,3 +35,71 @@ Image of running jenkins:
 1. In jenkins Install & Open Blue Ocean Jenkins Plugin
 
 2. Create a new pipeline name it: Images below shows the process.
+
+3. Create a new file to keep jenkins pipeline: jenkinsfile
+```markdown
+project14/deploy/jenkinsfile
+```
+Paste the following jenkins pipeline code in the file:
+```markdown
+pipeline {
+    agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        script {
+          sh 'echo "Building Stage"'
+        }
+      }
+    }
+    }
+}
+```
+4. Configure jenkins to build from the file: and then build and view output on blue ocean UI
+
+Picture:
+
+To further understand pipeline in jenkins, create a new branch in jenkins and name it feature/jenkinspipeline-stages, switch to the branch and paste the following codes in jenkins file:
+
+   ```markdown
+pipeline {
+    agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        script {
+          sh 'echo "Building Stage"'
+        }
+      }
+    }
+
+    stage('Test') {
+      steps {
+        script {
+          sh 'echo "Testing Stage"'
+        }
+      }
+    }
+    }
+}
+```
+
+Save configuration and go to jinkins interface to click on the project name and tap Build repository now, this will make it possible for jenkins to buid both main and branch, output can equally be seen in blue ocean interface.
+
+image of interface:
+
+**A task:**
+
+1. Create a pull request to merge the latest code into the main branch
+2. After merging the PR, go back into your terminal and switch into the main branch.
+3. Pull the latest change.
+4. Create a new branch, add more stages into the Jenkins file to simulate below phases. (Just add an echo command like we have in build and test stages)
+   1. Package 
+   2. Deploy 
+   3. Clean up
+5. Verify in Blue Ocean that all the stages are working, then merge your feature branch to the main branch
+6. Eventually, your main branch should have a successful pipeline like this in blue ocean.
+
+**Image of task result:**
