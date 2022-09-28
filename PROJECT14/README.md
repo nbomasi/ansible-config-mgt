@@ -12,7 +12,7 @@
 
 ## Configuring Ansible For Jenkins Deployment
 
-1. Install Jenkins
+**Step1. Install Jenkins**
 
 ```markdown
 yum install java-11-openjdk-devel
@@ -23,3 +23,8 @@ yum install jenkins
 sudo systemctl start jinkins
 sudo systemctl status jinkins
 ```
+Image of running jenkins:
+
+1. In jenkins Install & Open Blue Ocean Jenkins Plugin
+
+2. Create a new pipeline name it:
