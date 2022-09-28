@@ -17,5 +17,29 @@
         }
       }
     }
+
+    stage('package') {
+      steps {
+        script {
+          sh 'echo "Package stage"'
+        }
+      }
+    }
+
+    stage('deploy') {
+      steps {
+        script {
+          sh 'echo "deploy stage"'
+        }
+      }
+    }
+
+    stage('cleanup') {
+      steps {
+        script {
+          sh 'echo "clean up stage"'
+        }
+      }
+    }
     }
 }
