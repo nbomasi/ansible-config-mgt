@@ -23,8 +23,15 @@ yum install jenkins
 sudo systemctl start jinkins
 sudo systemctl status jinkins
 ```
+**Issue encountered installing Jenkins:**
+1. SSH  to Jenkins keep timing out on REDHAT
+Solution: I had to use ubuntu 20.08 version, and it worked fine: Link to instalation of jenkins on Ubuntu: https://github.com/nbomasi/Bomasi-DevOps/blob/e3692435ec0877d0e1616da7f92348ae4b0cb909/PROJECT9-JENKINS.md
+
+2. While setting up pipeline on blue ocean, I had issue with token, poping error of username:
+Solution: I had to go to the token settings to enable users
+
 Image of running jenkins:
 
 1. In jenkins Install & Open Blue Ocean Jenkins Plugin
 
-2. Create a new pipeline name it:
+2. Create a new pipeline name it: Images below shows the process.
