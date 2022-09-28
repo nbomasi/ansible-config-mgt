@@ -37,7 +37,7 @@
     stage('cleanup') {
       steps {
         scpript {
-          sh 'echo' "clean up stage"
+          sh 'echo "clean up stage"'
         }
       }
     }
