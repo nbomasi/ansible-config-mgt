@@ -2,43 +2,15 @@
     agent any
 
   stages {
-    stage('Build') {
+    stage('SCM Checkout') {
       steps {
-        script {
-          sh 'echo "Building Stage"'
-        }
+         git branch: 'main', url: 'https://github.com/nbomasi/ansible-config-mgt.git' 
       }
     }
 
-    stage('Test') {
+    stage('run-ansible-playbook') {
       steps {
-        script {
-          sh 'echo "Testing Stage"'
-        }
-      }
-    }
-
-    stage('package') {
-      steps {
-        script {
-          sh 'echo "Package stage"'
-        }
-      }
-    }
-
-    stage('deploy') {
-      steps {
-        script {
-          sh 'echo "deploy stage"'
-        }
-      }
-    }
-
-    stage('cleanup') {
-      steps {
-        script {
-          sh 'echo "clean up stage"'
-        }
+        ansiblePlaybook credentialsId: 'ssh-key', disableHostKeyChecking: true, installation: 'myansible', inventory: 'PROJECT14/inventory/dev.yml', playbook: 'PROJECT14/playbooks/site.yml'
       }
     }
     }
