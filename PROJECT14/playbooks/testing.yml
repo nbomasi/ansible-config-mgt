@@ -2,7 +2,7 @@
 - hosts: apache
 - name: install apache
   become: true
-  ansible.builtin.yum:
+  yum:
     name: "httpd"
     state: present
 
