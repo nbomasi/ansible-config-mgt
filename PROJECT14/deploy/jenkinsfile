@@ -10,7 +10,7 @@
 
     stage('run-ansible-playbook') {
       steps {
-        ansiblePlaybook colorized: true, credentialsId: 'ssh-key', disableHostKeyChecking: true, installation: 'myansible', inventory: 'PROJECT14/invetory/dev.yml', playbook: 'PROJECT14/playbooks/testing.yml'
+        ansiblePlaybook colorized: true, credentialsId: 'ssh-key', disableHostKeyChecking: true, installation: 'myansible', inventory: 'PROJECT14/inventory/dev.yml', playbook: 'PROJECT14/playbooks/testing.yml'
       }
     }
     }
