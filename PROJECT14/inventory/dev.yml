@@ -1,11 +1,11 @@
 #[webserver]
 #172.31.85.68 ansible_ssh_user='ec2-user'
 
-[apache]
-10.138.0.6 ansible_ssh_user='nbomasi'
+#[apache]
+#10.138.0.6 ansible_ssh_user='nbomasi'
 
-#[nginx]
-#10.138.0.4 ansible_ssh_user='nbomasi'
+[nginx]
+10.138.0.4 ansible_ssh_user='nbomasi'
 
 #[db]
 #172.31.22.142 ansible_ssh_user='ubuntu' 
