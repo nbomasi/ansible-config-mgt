@@ -2,7 +2,7 @@
 #172.31.85.68 ansible_ssh_user='ec2-user'
 
 [apache]
-172.31.82.28 ansible_ssh_user='ec2-user'
+172.31.82.28 ansible_ssh_user='nbomasi'
 
 #[nginx]
 #172.31.85.53 ansible_ssh_user='ubuntu'
