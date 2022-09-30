@@ -7,7 +7,7 @@
         name: nginx
         state: latest
     - name: start nginx
-     service: 
+      service: 
         name: nginx
-       state: started
-       enabled: yes  # if you want to also enable nginxc
+        state: started
+        enabled: yes  # if you want to also enable nginxc
