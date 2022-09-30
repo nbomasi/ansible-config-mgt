@@ -1,40 +1,44 @@
 ---
-- hosts: apache
-- name: install apache
-#  become: true
+- name: Ansible Playbook to Install and Setup Apache on Ubuntu
+- host: apache
+  become: yes
   tasks:
-  ansible.builtin.yum:
-    name: "httpd"
-    state: present
-
-- name: install git
-  become: true
-  ansible.builtin.yum:
-    name: "git"
-    state: present
-
-- name: clone a repo
-  become: true
-  ansible.builtin.git:
-    repo: https://github.com/nbomasi/tooling.git
-    dest: /var/www/html
-    force: yes
-
-- name: copy html content to one level up
-  become: true
-  command: cp -r /var/www/html/html/ /var/www/
-
-- name: Start service httpd, if not started
-  become: true
-  ansible.builtin.service:
-    name: httpd
-    state: started
-
-- name: recursively remove /var/www/html/html/ directory
-  become: true
-  ansible.builtin.file:
-    path: /var/www/html/html
-    state: absent
+    - name: Install latest version of Apache
+      apt: name=apache2 update_cache=yes state=latest
+ 
+    - name: Create document root for domain configured in host variable
+      file:
+        path: "/var/www/{{ http_host }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0755'
+ 
+    - name: Copy your index file
+      template:
+        src: "files/index-template.html"
+        dest: "/var/www/{{ http_host }}/index.html"
+ 
+    - name: Set up virtuahHost
+      template:
+        src: "files/apache-template.conf"
+        dest: "/etc/apache2/sites-available/{{ http_conf }}"
+ 
+    - name: Enable site
+      command: a2ensite {{ http_conf }}
+      notify: restart-apache
+ 
+    - name: "UFW firewall allow HTTP on port {{ http_port }}"
+      ufw:
+        rule: allow
+        port: "{{ http_port }}"
+        proto: tcp
+ 
+  handlers:
+    - name: restart-apache
+      service:
+        name: apache2
+        state: restarted
 
 - host: nginx 
 - name: set up webserver
