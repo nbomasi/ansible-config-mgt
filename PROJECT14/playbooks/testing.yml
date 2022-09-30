@@ -40,7 +40,7 @@
         name: apache2
         state: restarted
 
-- hosts: nginx 
+- host: nginx 
 - name: set up webserver
   tasks: 
     - name: ensure nginx is at the latest version
