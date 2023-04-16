@@ -28,7 +28,7 @@
 # Extra task:
 
 - name: Create directory, file and set timezone on all servsers
-  hostS: webservers, nfs, db, lb
+  hosts: webservers, nfs, db, lb
   become: yes
   tasks:
      - name: create a directory
