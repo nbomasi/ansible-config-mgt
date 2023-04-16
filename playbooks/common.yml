@@ -24,3 +24,23 @@
       apt:
         name: wireshark
         state: latest
+
+# Extra task:
+
+- name: Create directory, file and set timezone on all servsers
+  hostS: webservers, nfs, db, lb
+  become: yes
+  tasks:
+     - name: create a directory
+       file:
+         path: /home/sample-folder
+         state: directory
+
+     - name: create a file
+       file: 
+         path: /home/sample-folder/sample-file.txt
+         state: touch
+
+     - name: set timezone
+       timezone:
+         name: Africa/Lagos
