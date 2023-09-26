@@ -7,3 +7,5 @@ from the beginning to the end.
 ### Heading 3
 *italic*
 **bold**
+
+[visit darey.io](https://www.darey.io)
